@@ -1,0 +1,528 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="styleSheet.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Golf Stats Tracker - Demo</title>
+</head>
+
+<body onload="checkMobile()">
+    <div id="background-img"></div>
+    <div id="hide-toolbar-message">
+        <div id="hide-toolbar-message-content">
+            <h1>Welcome to Golf Stats Tracker!</h1>
+            <br>
+            <p>Make sure to hide the toolbar by clicking the "<span id="small-A">A</span>A" in the top left corner of
+                your screen.</p>
+            <br>
+            <br>
+            <button type="button" onclick="hideToolbarContinue()">Continue</button>
+        </div>
+    </div>
+    <div id="login-page">
+        <div id="login-box">
+            <div id="login-form">
+                <div class="input-div">
+                    <div class="input-div-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" spellcheck="false" placeholder="Email" id="login-email-input"
+                        value="demoAccount123@gmail.com">
+                </div>
+                <div class="input-div">
+                    <div class="input-div-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" spellcheck="false" placeholder="Password" id="login-password-input"
+                        value="demo123">
+                </div>
+                <p id="login-error-message">this is hidden</p>
+                <button onclick="login()">Login</button>
+                <p class="switch-action">Don't have an account? <a onclick="switchToSignup()">Sign up</a></p>
+            </div>
+            <div id="signup-form">
+                <div class="input-div">
+                    <div class="input-div-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" spellcheck="false" placeholder="Email" id="signup-email-input">
+                </div>
+                <div class="input-div">
+                    <div class="input-div-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" spellcheck="false" placeholder="Display Name (optional)"
+                        id="signup-displayName-input">
+                </div>
+                <div class="input-div">
+                    <div class="input-div-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input type="password" spellcheck="false" placeholder="Password" id="signup-password-input">
+                </div>
+                <p id="signup-error-message">this is hidden</p>
+                <button onclick="signup()">Sign Up</button>
+                <p class="switch-action">Already have an account? <a onclick="switchToLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <input type="checkbox" id="nav-check">
+        <label for="nav-check" class="nav-check-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label id="page-label"></label>
+        <ul>
+            <li onclick="toHomePage()">Home</li>
+            <li onclick="toFriendsPage()">Friends</li>
+            <li onclick="toSettingsPage()">Settings</li>
+            <li id="logout-btn" onclick="logout()">Logout</li>
+        </ul>
+    </nav>
+
+    <div id="home-page">
+        <div id="home-btns-container">
+            <button type="button" class="home-option-btn" id="newRound-btn" onclick="toNewRoundPage()">Start a<br>New
+                Round</button>
+            <button type="button" class="home-option-btn" id="view-stats-btn" onclick="toStatsPage()">View
+                Stats</button>
+        </div>
+    </div>
+
+    <div id="friends-page">
+        <div id="search-container">
+            <div class="input-div">
+                <div class="input-div-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <input type="text" spellcheck="false" placeholder="Display Name" id="displayName-input">
+                <div class="input-div-icon">
+                    <i class="fas fa-search" id="user-search-btn"></i>
+                </div>
+            </div>
+            <p id="no-results-message">No results found for... <span id="no-results-message-value"></span></p>
+            <div id="search-results">
+                <!-- Created dynamically -->
+                <ul id="user-list">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="settings-page">
+        <div id="displayName-setting">
+            <label for="displayName-setting-input">Display Name: </label>
+            <input type="text" spellcheck="false" id="displayName-setting-input">
+        </div>
+        <div id="trackANDshare-settings">
+            <div class="setting-option">
+                <h4>Track Scores</h4>
+                <input id="trackScores-toggle" type="checkbox" onclick="checkTrackScores()">
+            </div>
+            <div class="setting-option">
+                <h4 class="score-setting-label">Share Birdies or lower</h4>
+                <input id="shareBirdiesMINUS-toggle" class="score-setting-toggle" type="checkbox"
+                    onclick="checkTrackScores()">
+            </div>
+            <div class="setting-option">
+                <h4 class="score-setting-label">Share Pars</h4>
+                <input id="sharePars-toggle" class="score-setting-toggle" type="checkbox" onclick="checkTrackScores()">
+            </div>
+            <div class="setting-option">
+                <h4 class="score-setting-label">Share Bogeys</h4>
+                <input id="shareBogeys-toggle" class="score-setting-toggle" type="checkbox"
+                    onclick="checkTrackScores()">
+            </div>
+            <div class="setting-option">
+                <h4 class="score-setting-label">Share Double Bogeys or higher</h4>
+                <input id="shareDoubleBogeysPLUS-toggle" class="score-setting-toggle" type="checkbox"
+                    onclick="checkTrackScores()">
+            </div>
+            <div class="setting-option">
+                <h4>Track Putts</h4>
+                <input id="trackPutts-toggle" type="checkbox" onclick="checkTrackPutts()">
+            </div>
+            <div class="setting-option">
+                <h4 class="putt-setting-label">Share 1 Putts</h4>
+                <input id="shareOnePutts-toggle" class="putt-setting-toggle" type="checkbox"
+                    onclick="checkTrackPutts()">
+            </div>
+            <div class="setting-option">
+                <h4 class="putt-setting-label">Share 2 Putts</h4>
+                <input id="shareTwoPutts-toggle" class="putt-setting-toggle" type="checkbox"
+                    onclick="checkTrackPutts()">
+            </div>
+            <div class="setting-option">
+                <h4 class="putt-setting-label">Share 3 Putts or higher</h4>
+                <input id="shareThreePuttsPLUS-toggle" class="putt-setting-toggle" type="checkbox"
+                    onclick="checkTrackPutts()">
+            </div>
+            <div class="setting-option">
+                <h4>Track Fairways in Regulation</h4>
+                <input id="trackFairwaysInReg-toggle" type="checkbox" onclick="checkTrackFairwaysInReg()">
+            </div>
+            <div class="setting-option">
+                <h4 id="shareFairwaysInReg-label">Share Fairways in Regulation</h4>
+                <input id="shareFairwaysInReg-toggle" type="checkbox" onclick="checkTrackFairwaysInReg()">
+            </div>
+            <div class="setting-option">
+                <h4>Track Greens in Regulation</h4>
+                <input id="trackGreensInReg-toggle" type="checkbox" onclick="checkTrackGreensInReg()">
+            </div>
+            <div class="setting-option">
+                <h4 id="shareGreensinReg-label">Share Greens in Regulation</h4>
+                <input id="shareGreensInReg-toggle" type="checkbox" onclick="checkTrackGreensInReg()">
+            </div>
+            <div class="setting-option">
+                <h4>Track Holes with Hazards</h4>
+                <input id="trackHolesWithHazard-toggle" type="checkbox" onclick="checkTrackHolesWithHazard()">
+            </div>
+            <div class="setting-option">
+                <h4 id="shareHolesWithHazard-label">Share Holes with Hazards</h4>
+                <input id="shareHolesWithHazard-toggle" type="checkbox" onclick="checkTrackHolesWithHazard()">
+            </div>
+        </div>
+        <button type="button" id="save-settings-btn" onclick="saveSettings()">Save</button>
+    </div>
+
+    <div id="newRound-page">
+        <h1 id="hole-number-text">Hole #<span id="hole-number">1</span></h1>
+        <div id="newRound-error-full">
+            <p id="newRound-error"></p>
+        </div>
+        <div id="nine-hole-message">
+            <div id="nine-hole-message-content">
+                <p>You have successfully tracked 9 holes. Do you plan to play a full round of 18?</p>
+                <button type="button" class="nine-hole-message-btn" onclick="makeTheTurn()">Yes</button>
+                <button type="button" class="nine-hole-message-btn" onclick="finishRound()">No</button>
+            </div>
+        </div>
+        <div id="round-end-message">
+            <div id="round-end-message-content">
+                <p>You have successfully tracked your round. Click <a onclick="toStatsPage()">here</a> to view
+                    your stats.</p>
+            </div>
+        </div>
+        <div class="question" id="Q1">
+            <form>
+                <div id="par-question">
+                    <h3>Par</h3>
+                    <input type="radio" name="par-option" id="par-3" value="3">
+                    <label for="par-3" class="par-option-label">3</label>
+                    <input type="radio" name="par-option" id="par-4" value="4">
+                    <label for="par-4" class="par-option-label">4</label>
+                    <input type="radio" name="par-option" id="par-5" value="5">
+                    <label for="par-5" class="par-option-label">5</label>
+                </div>
+                <div id="score-question">
+                    <h3>Score</h3>
+                    <input type="radio" name="score-option" id="score-2" value="2">
+                    <label for="score-2" class="score-option-label">≤ 2</label>
+                    <input type="radio" name="score-option" id="score-3" value="3">
+                    <label for="score-3" class="score-option-label">3</label>
+                    <input type="radio" name="score-option" id="score-4" value="4">
+                    <label for="score-4" class="score-option-label">4</label>
+                    <input type="radio" name="score-option" id="score-5" value="5">
+                    <label for="score-5" class="score-option-label">5</label>
+                    <input type="radio" name="score-option" id="score-6" value="6">
+                    <label for="score-6" class="score-option-label">6</label>
+                    <input type="radio" name="score-option" id="score-7" value="7">
+                    <label for="score-7" class="score-option-label">≥ 7</label>
+                </div>
+            </form>
+            <button type="button" id="submit-score-btn" onclick="submitScore()">Ok</button>
+        </div>
+        <div class="question" id="Q2">
+            <h3 class="qustion-text">Putts</h3>
+            <button type="button" class="putt-btn" onclick="submitPutts(1)">1</button>
+            <button type="button" class="putt-btn" onclick="submitPutts(2)">2</button>
+            <button type="button" class="putt-btn" onclick="submitPutts(3)">3+</button>
+        </div>
+        <div class="question" id="Q3">
+            <h2 class="qustion-text">Did you hit the Fairway in Regulation?</h2>
+            <div class="question-btns">
+                <img src="assets/greenCheck.png" onclick="questionYes(3)" class="check-btn">
+                <img src="assets/redX.png" onclick="nextQuestion(3)" class="X-btn">
+            </div>
+        </div>
+        <div class="question" id="Q4">
+            <h2 class="qustion-text">Did you hit the Green in Regulation?</h2>
+            <div class="question-btns">
+                <img src="assets/greenCheck.png" onclick="questionYes(4)" class="check-btn">
+                <img src="assets/redX.png" onclick="nextQuestion(4)" class="X-btn">
+            </div>
+        </div>
+        <div class="question" id="Q5">
+            <h2 class="qustion-text">Did you lose strokes to a hazard?</h2>
+            <div class="question-btns">
+                <img src="assets/greenCheck.png" onclick="questionYes(5)" class="check-btn">
+                <img src="assets/redX.png" onclick="nextQuestion(5)" class="X-btn">
+            </div>
+        </div>
+    </div>
+
+    <div id="stats-page">
+        <div id="track-error-full">
+            <p id="track-error">It looks like you are not tracking any stats. Update your settings to start a new round.
+            </p>
+        </div>
+        <div id="stats-container">
+            <div id="stats-tab-btns">
+                <button id="prev-rnd-tab" class="stats-tab"
+                    onclick="newStatsTab('prev-rnd-content', this)">Previous</button>
+                <button class="stats-tab" onclick="newStatsTab('lifetime-content', this)">Lifetime</button>
+                <button class="stats-tab" onclick="newStatsTab('friends-stats-content', this)">Friends</button>
+            </div>
+            <div id="prev-rnd-content" class="stats-content">
+                <div class="stats-btns-container">
+                    <div class="scores-stat-btn">
+                        <div class="stats-dropdown">
+                            <button class="stat-btn" onclick="showScoreStatsOptions()">Scores <i
+                                    class="fa fa-caret-down"></i></button>
+                            <div class="scores-dropdown-content">
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('current', 'birdies')">Birdies
+                                    or
+                                    lower</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('current', 'pars')">Pars</a>
+                                <a class="stat-dropdown-btn"
+                                    onclick="changePercentCircle('current', 'bogeys')">Bogeys</a>
+                                <a class="stat-dropdown-btn"
+                                    onclick="changePercentCircle('current', 'doubleBogeys')">Double
+                                    Bogeys
+                                    or higher</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="putts-stat-btn">
+                        <div class="stats-dropdown">
+                            <button class="stat-btn" onclick="showPuttStatsOptions()">Putts <i
+                                    class="fa fa-caret-down"></i></button>
+                            <div class="putts-dropdown-content">
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('current', 'onePutts')">1
+                                    Putts</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('current', 'twoPutts')">2
+                                    Putts</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('current', 'threePutts')">3
+                                    Putts or more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="greensInReg-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('current', 'greensinReg')">Greens in
+                            Regulation</button>
+                    </div>
+                    <div class="fairwaysInReg-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('current', 'fairwaysinReg')">Fairways in
+                            Regulation</button>
+                    </div>
+                    <div class="holesWithHazards-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('current', 'holesWithHazards')">Holes with
+                            Hazards</button>
+                    </div>
+                </div>
+                <div class="stat-info">
+                    <h1 id="current-stat-name"></h1>
+                </div>
+                <div class="percentageWheel">
+                    <div id="currentPercentageWheel" class="round" data-thickness="30" data-start-angle="-1.57"
+                        data-empty-fill="rgba(255, 255, 255, 0.2)">
+                        <div class="percentageWheel-text">
+                            <strong id="currentPercentageWheel-percent"></strong>
+                            <br>
+                            <strong id="currentPercentageWheel-text" class="percentageWheel-nums"><br></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="lifetime-content" class="stats-content">
+                <div class="stats-btns-container">
+                    <div class="scores-stat-btn">
+                        <div class="stats-dropdown">
+                            <button class="stat-btn" onclick="showScoreStatsOptions()">Scores <i
+                                    class="fa fa-caret-down"></i></button>
+                            <div class="scores-dropdown-content">
+                                <a class="stat-dropdown-btn"
+                                    onclick="changePercentCircle('lifetime', 'birdies')">Birdies or
+                                    lower</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('lifetime', 'pars')">Pars</a>
+                                <a class="stat-dropdown-btn"
+                                    onclick="changePercentCircle('lifetime', 'bogeys')">Bogeys</a>
+                                <a class="stat-dropdown-btn"
+                                    onclick="changePercentCircle('lifetime', 'doubleBogeys')">Double Bogeys
+                                    or higher</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="putts-stat-btn">
+                        <div class="stats-dropdown">
+                            <button class="stat-btn" onclick="showPuttStatsOptions()">Putts <i
+                                    class="fa fa-caret-down"></i></button>
+                            <div class="putts-dropdown-content">
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('lifetime', 'onePutts')">1
+                                    Putts</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('lifetime', 'twoPutts')">2
+                                    Putts</a>
+                                <a class="stat-dropdown-btn" onclick="changePercentCircle('lifetime', 'threePutts')">3
+                                    Putts or more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="greensInReg-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('lifetime', 'greensinReg')">Greens in
+                            Regulation</button>
+                    </div>
+                    <div class="fairwaysInReg-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('lifetime', 'fairwaysinReg')">Fairways
+                            in
+                            Regulation</button>
+                    </div>
+                    <div class="holesWithHazards-stat-btn">
+                        <button class="stat-btn" onclick="changePercentCircle('lifetime', 'holesWithHazards')">Holes
+                            with
+                            Hazards</button>
+                    </div>
+                </div>
+                <div class="stat-info">
+                    <h1 id="lifetime-stat-name"></h1>
+                </div>
+                <div class="percentageWheel">
+                    <div id="lifetimePercentageWheel" class="round" data-thickness="30" data-start-angle="-1.57"
+                        data-empty-fill="rgba(255, 255, 255, 0.2)">
+                        <div class="percentageWheel-text">
+                            <strong id="lifetimePercentageWheel-percent"></strong>
+                            <br>
+                            <strong id="lifetimePercentageWheel-text" class="percentageWheel-nums"><br></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="friends-stats-content" class="stats-content">
+                <p id="no-friends-message">It looks like you haven't added any friends yet. Click <a
+                        onclick="toFriendsPage()">here</a> to add your 1st friend!</p>
+                <!-- Created dynamically -->
+                <ul id="friends-list">
+                </ul>
+                <div id="compare-friend-tab">
+                    <div class="stats-btns-container">
+                        <div>
+                            <div class="stats-dropdown">
+                                <button class="stat-btn" onclick="showScoreStatsOptions()">Scores <i
+                                        class="fa fa-caret-down"></i></button>
+                                <div class="scores-dropdown-content">
+                                    <a class="stat-dropdown-btn" onclick="changeFriendPercentCircle('birdies')">Birdies
+                                        or
+                                        lower</a>
+                                    <a class="stat-dropdown-btn" onclick="changeFriendPercentCircle('pars')">Pars</a>
+                                    <a class="stat-dropdown-btn"
+                                        onclick="changeFriendPercentCircle('bogeys')">Bogeys</a>
+                                    <a class="stat-dropdown-btn"
+                                        onclick="changeFriendPercentCircle('doubleBogeys')">Double Bogeys
+                                        or higher</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="stats-dropdown">
+                                <button class="stat-btn" onclick="showPuttStatsOptions()">Putts <i
+                                        class="fa fa-caret-down"></i></button>
+                                <div class="putts-dropdown-content">
+                                    <a class="stat-dropdown-btn" onclick="changeFriendPercentCircle('onePutts')">1
+                                        Putts</a>
+                                    <a class="stat-dropdown-btn" onclick="changeFriendPercentCircle('twoPutts')">2
+                                        Putts</a>
+                                    <a class="stat-dropdown-btn" onclick="changeFriendPercentCircle('threePutts')">3
+                                        Putts or more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="stat-btn" onclick="changeFriendPercentCircle('greensinReg')">Greens in
+                                Regulation</button>
+                        </div>
+                        <div>
+                            <button class="stat-btn" onclick="changeFriendPercentCircle('fairwaysinReg')">Fairways
+                                in
+                                Regulation</button>
+                        </div>
+                        <div>
+                            <button class="stat-btn" onclick="changeFriendPercentCircle('holesWithHazards')">Holes
+                                with
+                                Hazards</button>
+                        </div>
+                    </div>
+                    <div class="stat-info">
+                        <h1 id="friends-stat-name"></h1>
+                    </div>
+                    <div class="percentageWheel">
+                        <div id="outerFriendsPercentageWheel" class="round" data-thickness="15" data-start-angle="-1.57"
+                            data-empty-fill="rgba(255, 255, 255, 0.2)">
+
+                            <div id="friends-wheel-text" class="percentageWheel-text">
+                                <strong id="outerFriendsPercentageWheel-percent"></strong>
+                                <br>
+                                <strong id="outerFriendsPercentageWheel-text" class="percentageWheel-nums"><br></strong>
+                                <span id="seperation">
+                                    <p>hidden</p>
+                                </span>
+                                <strong id="innerFriendsPercentageWheel-percent"></strong>
+                                <br>
+                                <strong id="innerFriendsPercentageWheel-text" class="percentageWheel-nums"><br></strong>
+                            </div>
+                        </div>
+                        <div id="innerFriendsPercentageWheel" class="round" data-thickness="15" data-start-angle="-1.57"
+                            data-empty-fill="rgba(255, 255, 255, 0.2)">
+                        </div>
+                    </div>
+                    <div id="friends-key">
+                        <section>
+                            <div id="back-btn-div">
+                                <i id="back-btn" class="fas fa-arrow-circle-left" onclick="backToFriends()"></i>
+                            </div>
+                        </section>
+                        <section>
+                            <div id="your-color-box"></div>
+                            <p>You</p>
+                        </section>
+                        <section>
+                            <div id="friend-color-box"></div>
+                            <p><span id="friend-displayName-text"></span></p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAY2_IbcBfpoGtswcGPMx7n--IM9sK9xk0",
+            authDomain: "golf-stats-tracker-demo.firebaseapp.com",
+            databaseURL: "https://golf-stats-tracker-demo.firebaseio.com",
+            projectId: "golf-stats-tracker-demo",
+            storageBucket: "golf-stats-tracker-demo.appspot.com",
+            messagingSenderId: "267395609347",
+            appId: "1:267395609347:web:64271246a7b09a508aaf36"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const database = firebase.firestore();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>

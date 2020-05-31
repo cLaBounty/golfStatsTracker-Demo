@@ -1,0 +1,1147 @@
+* { 
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("assets/background.jpg");
+    background-position: 70% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -5;
+}
+
+/* full screen messages */
+#newRound-error-full, #track-error-full, #nine-hole-message, #round-end-message, #hide-toolbar-message {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* hide tool bar message */
+#hide-toolbar-message-content {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin: 25px;
+    padding: 20px 15px;
+    background-color: rgb(50, 50, 50);
+    border: 4px solid green;
+}
+#hide-toolbar-message-content h1 {
+    font-size: 36px;
+}
+#small-A {
+    font-size: 18px;
+}
+#hide-toolbar-message-content button {
+    float: right;
+    color: white;
+    font-size: 18px;
+    margin-right: 5px;
+    padding: 10px;
+    background: rgb(115, 115, 115);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+/* login/signup page */
+#login-page {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#login-box {
+    width: 600px;
+    margin: 25px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 50px rgba(150, 150, 150);
+}
+#login-form {
+    display: block;
+}
+#signup-form {
+    display: none;
+}
+.input-div {
+    display: grid;
+    grid-template-columns: 7% 93%;
+    width: 85%;
+    margin: 10px auto 30px;
+    padding: 5px 0;
+    border-bottom: 2px solid white;
+}
+.input-div-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-div-icon i {
+    font-size: 1.2em;
+    color: rgb(190, 190, 190);
+}
+#login-box input {
+    color: white;
+    font-size: 18px;
+    margin-left: 7px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+#login-box ::placeholder {
+    font-size: 18px;
+    color: rgb(190, 190, 190);
+}
+#login-error-message, #signup-error-message {
+    visibility: hidden;
+    position: relative;
+    top: -20px;
+    color: red;
+    font-size: 16px;
+    width: 85%;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+#login-box button {
+    position: relative;
+    top: -10px;
+    color: white;
+    font-size: 18px;
+    width: 85%;
+    margin: 0 7.5%;
+    padding: 12px 0;
+    border: 2px solid white;
+    border-radius: 15px;
+    outline: none;
+    background: transparent;
+}
+#login-box button:hover {
+    background: rgb(150, 150, 150);
+    cursor: pointer;
+    transition: 0.25s;
+}
+.switch-action {
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    text-align: right;
+    margin: 3px -7.5%;
+}
+.switch-action a, #live-link {
+    color: rgb(62, 184, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* nav bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(50, 50, 50); /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, rgb(20, 20, 20), rgb(90, 90, 90));
+    border-bottom: 4px solid #ffffff;
+    z-index: 10;
+}
+#page-label {
+    color: #ffffff;
+    font-size: 38px;
+    line-height: 80px;
+    padding: 0 25px;
+    font-weight: bold;
+}
+nav ul {
+    float: right;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+nav ul li {
+    display: inline-block;
+    color: #ccc;
+    font-size: 24px;
+    line-height: 40px;
+    margin: 20px 25px;
+}
+nav ul li:hover {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#logout-btn:hover {
+    color: red;
+}
+.nav-check-btn {
+    display: none;
+    float: left;
+    color: white;
+    font-size: 38px;   
+    line-height: 80px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+#nav-check {
+    display: none;
+}
+
+/* home page */
+#home-page {
+    height: calc(100vh - 84px);
+    width: 100%;
+    position: relative;
+    top: 84px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#home-btns-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 55%;
+}
+.home-option-btn {
+    width: 270px;
+    height: 150px;
+    font-size: 30px;
+    margin: 10px 50px;
+    line-height: 40px;
+    background-color: rgba(220, 220, 220, 0.925);
+    border-radius: 30px;
+    border: none;
+    outline: none;
+}
+.home-option-btn:hover {
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* friends page */
+#friends-page {
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+#search-container {
+    width: 965px;
+    height: 400px;
+    margin: 25px;
+    padding: 15px 0 0 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 4px solid white;
+    box-shadow: 0 0 25px rgba(100, 100, 100);
+}
+#search-container .input-div {
+    grid-template-columns: 20px calc(100% - 40px) 20px;
+    padding: 12px;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+#search-container input {
+    color: white;
+    font-size: 22px;
+    margin-left: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+#search-container ::placeholder {
+    color: rgb(190, 190, 190);
+    font-size: 22px;
+}
+#user-search-btn:hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset 0 0 3px black;
+}
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+}
+#search-results {
+    position: relative;
+    right: 7px;
+    bottom: 7px;
+    height: calc(100% - 94px);
+    overflow-y: auto;
+}
+#user-list {
+    position: relative;
+    right: 8px;
+    font-size: 22px;
+    list-style: none;
+    box-sizing: border-box;
+}
+#no-results-message {
+    display: none;
+    color: white;
+    font-size: 22px;
+    margin-left: calc(7.5% + 32px);
+    margin-right: calc(7.5% - 12px);
+    word-wrap: break-word;
+}
+#no-results-message-value {
+    font-weight: bold;   
+}
+.userlist-div {
+    display: none;
+    grid-template-columns: 20px calc(100% - 40px) 20px;
+    color: white;
+    font-size: 22px;
+    width: calc(85% - 42px);
+    margin: 10px 0 10px calc(7.5% + 42px);
+    padding: 12px;
+    border: 2px solid white;
+    border-radius: 25px;
+}
+.userlist-li {
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.userlist-minus {
+    display: none;
+}
+.userlist-plus:hover {
+    color: rgb(120, 231, 135);
+    cursor: pointer;
+    transition: 0.25s;
+}
+.userlist-minus:hover {
+    color: rgb(236, 145, 145);
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* settings page */
+#settings-page {
+    position: relative;
+    top: calc(84px + 25px);
+    height: calc(100vh - 84px - 25px);
+    width: 100%;
+}
+#displayName-setting {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0 0 25px 25px;
+    font-weight: bold;
+}
+#displayName-setting-input {
+    color: #ccc;
+    font-size: 30px;
+    width: 350px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+#displayName-setting-input:focus {
+    color: #ffffff;
+}
+#trackANDshare-settings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.setting-option {
+    width: 350px;
+    margin: 15px 0px 5px 25px;
+}
+.setting-option h4{
+    color: #ffffff;
+    font-size: 22px;
+    margin: 5px;
+}
+.setting-option input {
+    position: relative;
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    -webkit-appearance: none;
+    background: #ccc;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+.setting-option input:hover {
+    cursor: pointer;
+}
+.setting-option input:checked {
+    background: #03a9f4;
+}
+.setting-option input:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+.setting-option input:checked:before {
+    left: 40px;
+}
+#save-settings-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 26px;
+    width: 100px;
+    height: 60px;
+    background-color: rgba(230, 230, 230, 0.875);
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+#save-settings-btn:hover {
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* newRound Page */
+#newRound-page {
+    position: relative;
+    top: 84px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 84px);
+    width: 100%;
+}
+#Q1, #Q2, #Q3, #Q4, #Q5 {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#newRound-page h1 {
+    color: white;
+    font-size: 43px;
+    width: 100%;
+    height: 65px;
+    margin: 0 0 0 20px;
+    text-decoration: underline;
+}
+.question {
+    display: none;
+    height: calc(100% - 65px - 25px);
+    width: 100%;
+}
+#newRound-page h2 {
+    position: relative;
+    top: 15%;
+    color: white;
+    font-size: 38px;
+    width: 100%;
+    height: 74px;
+    margin: 0 25px 15px 25px;
+    text-align: center;
+    line-height: 140%;
+}
+#Q1 h3, #Q2 h3 {
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    margin: 0 25px 10px 25px;
+    text-align: center;   
+}
+#Q1 form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    top: -5%;
+    width: 100%;
+    height: 100%;
+}
+#Q1 input {
+    display: none;
+}
+#Q1 label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 38px;
+    margin: 15px 20px;
+    height: 70px;
+    width: 70px;
+    letter-spacing: -3px;
+    background-color: rgb(190, 190, 190);
+    border: none;
+    border-radius: 20%;
+    outline: none; 
+}
+#Q1 label:hover {
+    cursor: pointer;
+    transition: 0.25s;
+}
+#Q1 input:checked + label {
+    color: rgb(190, 190, 190);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+    background-color: white;
+}
+#par-question{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#score-question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    top: -10%;
+    width: 100%;
+}
+#submit-score-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 30px;
+    height: 60px;
+    width: 85px;
+    background-color: rgb(190, 190, 190);
+    border: none;
+    border-radius: 20px;   
+    outline: none;
+}
+#submit-score-btn:hover {
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+#Q2 {
+    position: relative;
+    top: -11%;
+}
+.putt-btn {
+    position: relative;
+    top: -36%;
+    color: white;
+    font-size: 38px;
+    height: 70px;
+    width: 70px;
+    margin: 15px 20px;
+    background-color: rgb(190, 190, 190);
+    border: none;
+    border-radius: 20%;
+    outline: none;
+}
+.putt-btn:hover {
+    color: rgb(190, 190, 190);
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.question-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 74px - 15px);
+    width: 100%;
+}
+.check-btn, .X-btn {
+    height: 250px;
+    width: 250px;
+    margin: 0 60px;
+}
+.check-btn:hover, .X-btn:hover {
+    cursor: pointer;
+    transition: 0.25s;
+}
+#newRound-error, #track-error {
+    color: red;
+    font-size: 28px;
+    text-align: center;
+    margin: 25px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 4px solid white;
+}
+#nine-hole-message-content {
+    color: white;
+    font-size: 28px;
+    margin: 25px;
+    padding: 15px 15px 0 15px;
+    text-align: center;
+    background-color: rgb(50, 50, 50);
+    border: 4px solid yellow;
+}
+.nine-hole-message-btn {
+    color: white;
+    font-size: 20px;
+    height: 40px;
+    width: 60px;
+    margin: 15px 25px;
+    background: rgb(115, 115, 115);
+    border: 2px solid white;
+    border-radius: 10px;
+}
+.nine-hole-message-btn:hover {
+    color: rgb(115, 115, 115);
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s;
+}
+#round-end-message-content {
+    color: white;
+    font-size: 28px;
+    margin: 25px;
+    padding: 15px;
+    text-align: center;
+    background-color: rgb(50, 50, 50);
+    border: 4px solid green;
+}
+#round-end-message-content a {
+    color: rgb(48, 118, 223);
+    text-decoration: underline;
+}
+#round-end-message-content a:hover {
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* stats page */
+#stats-page {
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+#stats-container {
+    width: 965px;
+    height: 400px;
+    margin: 25px;
+    border: 4px solid white;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 25px rgba(100, 100, 100);
+}
+#stats-tab-btns {
+    position: relative;
+    top: -48px;
+    left: -4px;
+}
+.stats-tab {
+    float: left;
+    color: white;
+    font-size: 18px;
+    margin-right: 7px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 3px solid white;
+    border-radius: 12px 12px 0 0;
+    outline: none;
+    cursor: pointer;
+}
+#prev-rnd-tab {
+    background-color: white;
+    color: black;
+}
+.stats-content {
+    position: relative;
+    top: -48px;
+    width: 100%;
+    height: 100%;
+}
+#prev-rnd-content {
+    display: flex;
+}
+#lifetime-content {
+    display: none;
+}
+#friends-stats-content {
+    display: none;
+}
+.stats-btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 0;
+}
+.stat-btn {
+    color: white;
+    font-size: 16px;
+    margin: 20px 10px 0;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 12px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+.stat-btn:hover, .stat-btn:focus {
+    background: rgb(150, 150, 150);
+    transition: 0.25s;
+}
+.stats-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.scores-dropdown-content, .putts-dropdown-content {
+    display: none;
+    position: absolute;
+    left: 10px;
+    width: 135px;
+    overflow: auto;
+    z-index: 2;
+}
+.scores-dropdown-content a, .putts-dropdown-content a {
+    display: block;
+    color: white;
+    font-size: 16px;
+    margin: 3px 0;
+    padding: 10px;
+    background-color: rgb(100, 100, 100);
+    border-radius: 12px;
+    border: 2px solid white;
+    outline: none;
+}
+.scores-dropdown-content a:hover, .putts-dropdown-content a:hover {
+    background: rgb(150, 150, 150);
+    cursor: pointer;
+    transition: 0.25s;
+}
+#stats-container .show {
+    display: block;
+}
+.stat-info {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 22%;
+    width: 100%;
+}
+.stat-info h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+#no-friends-message {
+    color: white;
+    font-size: 22px;
+    margin: 20px;
+}
+#no-friends-message a {
+    color: rgb(48, 118, 223);
+    text-decoration: underline;
+}
+#no-friends-message a:hover {
+    cursor: pointer;
+    transition: 0.25s;
+}
+.percentageWheel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    height: 70%;
+    text-align: center;    
+    z-index: 1;
+}
+.percentageWheel .round {
+    position: relative;
+    border-radius: 50%;
+}
+.percentageWheel-text {
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+.percentageWheel-nums {
+    color: rgb(150, 150, 150);
+    font-size: 22px;
+}
+#friends-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    top: 1%;
+    width: 99%;
+    height: 98%;
+    overflow-y: auto;
+}
+.friendsList-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 150px;
+    width: 150px;
+    margin: 5px 10px 0;
+}
+.friendsList-div:hover .friendsList-icon-div, .friendsList-div:hover .friendsList-h1 {
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.friendsList-icon-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(150, 150, 150);
+    font-size: 72px;
+    width: 100%;
+}
+.friendsList-h1 {
+    color: rgb(150, 150, 150);
+    font-size: 26px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#compare-friend-tab {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+#innerFriendsPercentageWheel {
+    position: absolute;
+}
+#friends-wheel-text {
+    font-size: 25px;
+}
+#innerFriendsPercentageWheel-percent {
+    position: relative;
+}
+#outerFriendsPercentageWheel-text, #innerFriendsPercentageWheel-text {
+    font-size: 20px;
+}
+#friends-wheel-text #seperation {
+    visibility: hidden;
+    font-size: 30%;
+}
+#friends-key {
+    display: grid;
+    grid-template-columns: 52px 80px calc(100% - 52px - 80px);
+    position: absolute;
+    bottom: 6px;
+    color: white;
+    font-size: 18px;
+    width: calc(100% - 9px);
+    margin: 0 3px 0 6px;
+}
+#friends-key section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#your-color-box, #friend-color-box {
+    position: relative;
+    top: -2px;
+    width: 17px;
+    height: 17px;
+    margin: 0 10px;
+    background-color: #3b8ad9;
+    border: 1px solid white;
+}
+#friend-color-box {
+    background-color: #c4a427;
+}
+#friends-key p {
+    width: calc(100% - 25px - 19px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#back-btn-div {
+    position: absolute;
+    top: -31px;
+    z-index: 9;
+}
+#back-btn {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 52px;
+}
+#back-btn:hover {
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* Mobile Changes */
+@media (max-width: 850px) {
+    /* Credit: https://stackoverflow.com/questions/26372127/background-fixed-no-repeat-not-working-on-mobile */
+    body:before {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background-image: url("assets/background.jpg");
+        background-position: 70% 0%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+    }
+    .nav-check-btn {
+        display: block;
+    }
+    nav ul {
+        position: fixed;
+        top: 84px;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.95);
+        transition: all 0.5s;
+    }
+    nav ul li {
+        display: block;
+        font-size: 25px;
+        margin: 50px 25px;
+        line-height: 50px;
+        border: 2px solid #ccc;        
+        border-radius: 10px;
+    }
+    nav ul li:hover {
+        color: white;
+        background-color: rgba(150,150,150, 0.4);
+    }
+    #logout-btn {
+        color: red;
+        border-color: red;
+    }
+    #logout-btn:hover {
+        color: white;
+        background-color: rgba(255, 0, 0, 0.75);
+    }
+    #nav-check:checked ~ ul {
+        left: 0;
+    }
+    #home-btns-container {
+        position: relative;
+        top: -21%;
+    }
+    .home-option-btn {
+        width: 248px;
+        height: 112px;
+    }
+    #Q1 h3, #Q2 h3 {
+        font-size: 30px;
+    }
+    #newRound-page h2 {
+        position: relative;
+        top: 2.5%;
+        font-size: 29px;
+    }
+    .check-btn, .X-btn {
+        height: 175px;
+        width: 175px;
+    }
+    #stats-container, #search-container {
+        position: relative;
+        top: 5%;
+        width: calc(100% - 50px);
+        height: 65%;
+    }
+    .stat-info {
+        top: 28%;
+    }
+    .stat-info h1 {
+        font-size: 26px;
+    }
+    .input-div {
+        width: calc(100% - 60px);
+    }
+    #no-results-message {
+        margin-left: calc(30px + 32px);
+        margin-right: 18px;
+    }
+    .userlist-div {
+        width: calc(100% - 60px - 42px);
+        margin: 10px 0 10px calc(30px + 42px);
+    }
+    .stat-btn {
+        font-size: 13px;
+        margin: 20px 5px 0 5px;
+        padding: 8px;
+    }
+    .scores-dropdown-content, .putts-dropdown-content {
+        left: 5px;
+    }
+    .scores-dropdown-content a, .putts-dropdown-content a {
+        font-size: 13px;
+        width: 95px
+    }
+    #friends-wheel-text {
+        font-size: 28px;
+    }
+    #friends-key {
+        grid-template-columns: 52px calc((100% - 52px) * 0.33) calc((100% - 52px) * 0.66);
+    }
+}
+
+/* Small device fixs */
+@media (max-height: 640px) {
+    #page-label {
+        font-size: 36px;
+    }
+    nav ul li {
+        margin: 40px 25px;
+        line-height: 45px;
+    }
+    .home-option-btn {
+        font-size: 26px;
+        width: 200px;
+        height: 100px;
+        margin: 20px 50px;
+        line-height: 30px;
+    }
+    #Q2 h3 {
+        position: relative;
+        bottom: 10px;
+    }
+    .setting-option h4{
+        font-size: 20px;
+    }
+    .check-btn, .X-btn {
+        position: relative;
+        top: -30px;
+        height: 120px;
+        width: 120px;
+        margin-bottom: 10px;
+    }
+    #newRound-page h1 {
+        font-size: 30px;
+        height: 40px;
+    }
+    #newRound-page h2 {
+        position: relative;
+        top: -25px;
+        font-size: 22px;
+        height: 50px;
+    }
+    #Q1 h3 {
+        font-size: 24px;
+    }
+    #Q1 label, .putt-btn {
+        font-size: 23px;
+        height: 50px;
+        width: 50px;
+        margin: 0 22px 5% 22px;
+    }
+    #submit-score-btn {
+        font-size: 24px;
+        height: 45px;
+        width: 65px;
+    }
+    #stats-container, #search-container {
+        position: relative;
+        top: 10%;
+        height: 65%;
+    }
+    .stats-tab {
+        font-size: 13px;
+    }
+    #stats-tab-btns {   
+        top: -41px;
+    }
+    .stat-btn {
+        font-size: 11px;
+        margin: 15px 2px 0 2px;
+        padding: 5px;
+    }
+    .scores-dropdown-content, .putts-dropdown-content {
+        left: 2px;
+    }
+    .scores-dropdown-content a, .putts-dropdown-content a {
+        font-size: 11px;
+        width: 80px;
+    }
+    .stat-info h1 {
+        font-size: 20px;
+    }
+    .percentageWheel {
+        top: 30%;
+    }
+    .percentageWheel-text {
+        font-size: 22px;
+    }
+    #friends-wheel-text {
+        line-height: 48%;
+    }
+    #currentPercentageWheel-text, #lifetimePercentageWheel-text, #outerFriendsPercentageWheel-text, #innerFriendsPercentageWheel-text {
+        font-size: 16px;
+    }
+    #outerFriendsPercentageWheel-text {
+        position: relative;
+        top: 3px;
+    }
+    #outerFriendsPercentageWheel-percent, #innerFriendsPercentageWheel-percent {
+        font-size: 18px;
+    }
+    #friends-key {
+        grid-template-columns: 40px 75px calc(100% - 40px - 75px);
+        bottom: -5px;
+        font-size: 16px;
+    }
+    #back-btn-div {
+        top: -26px;
+    }
+    #back-btn {
+        font-size: 40px;
+    }
+}
+
+/* Initially hide every page, except login */
+#navbar, #home-page, #friends-page, #settings-page, #newRound-page, #stats-page {
+    display: none;
+}
