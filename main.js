@@ -1,15 +1,3 @@
-// checking if on mobile
-function checkMobile() {
-    const screenWidth = $('html').width();
-    if (screenWidth <= 850) {
-        document.getElementById('hide-toolbar-message').style.display = 'flex';
-    }
-}
-
-function hideToolbarContinue() {
-    document.getElementById('hide-toolbar-message').style.display = 'none';
-}
-
 function switchToSignup() {
     // clear error
     document.getElementById('login-error-message').style.visibility = "hidden";
